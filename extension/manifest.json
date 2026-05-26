@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Lovable.dev Workspace Downloader",
+  "version": "0.1",
+  "description": "Download and zip Lovable.dev workspaces directly from the browser.",
+  "permissions": ["scripting", "storage", "downloads"],
+  "host_permissions": ["https://lovable.dev/*", "https://api.lovable.dev/*"],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_icon": "icons/icon48.png"
+  },
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://lovable.dev/*"
+      ],
+      "js": ["src/contentScript.js"]
+    }
+  ]
+}
